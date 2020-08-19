@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex, nofollow">
+
+        <title>Weiter zum Amazon Marktplatz</title>
+
+        <style type="text/css">
+            body {
+                font-family: Verdana, Geneva, sans-serif;
+                font-size: 14px;
+                color: #000;
+                background-color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                margin-top: 30px;
+                text-align: center;
+            }
+            .logo {
+                margin-bottom: 20px;
+            }
+            .logo img {
+                border: 0;
+            }
+            .button {
+                display: inline-block;
+                padding: 15px;
+                text-align: center;
+                color: #000;
+                background-color: #FF9900;
+                font-size: 1.1em;
+                text-decoration: none;
+                font-weight: bold;
+                border-top: #ffc000 2px solid;
+                border-right: #d77b00 2px solid;
+                border-bottom: #d77b00 2px solid;
+                border-left: #ffc000 2px solid;
+                border-radius: 5px;
+
+            }
+        </style>
+
+        <script type="text/javascript">
+            let autoredir = true;
+
+            setTimeout(function(){
+                if(autoredir){
+                    window.location = "{% url 'fallback' link_obj.key %}";
+                }
+            },8000);
+
+            const redirect = function () {
+
+                autoredir = false;
+
+                window.location = "{{link_obj.apple_link}}";
+
+                setTimeout(
+                        function () {
+                            if (document.hasFocus() === true) {
+
+                                window.location = "{% url 'fallback' link_obj.key %}";
+                            }
+                        },
+                        100
+                );
+
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+
+    <div class="container">
+        <div class="logo">
+            <a href="{% url 'fallback' link_obj.key %}" onclick="return redirect();">Weiter zum Marktplatz</a>
+        </div>
+        <a class="button" href="{% url 'fallback' link_obj.key %}" onclick="return redirect();">Weiter zum Amazon Marktplatz</a>
+    </div>
+
+
+    </body>
+</html>

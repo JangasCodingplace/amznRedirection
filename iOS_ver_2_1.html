@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <body>    
+    <button onclick="openLink()" style="" id="open-btn">Open</button>
+    <iframe id="l" width="1" height="1" style="visibility:hidden"></iframe>
+    <script>
+        function openLink () {
+          var customURI = 'com.amazon.mobile.shopping.web://'
+          var appNotInstalledURL = '{{link_obj.desktop_link}}'
+          var inAPPURL = "{{link_obj.apple_link}}"
+          window.location = "{% url 'redirection2' link_obj.key %}?lp="+appNotInstalledURL+"&customURI="+customURI;
+        }
+    </script>
+  </body>
+</html>

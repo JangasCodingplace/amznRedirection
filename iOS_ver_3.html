@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    
+    <script>
+       window.addEventListener('load',
+       function () {
+        var appNotInstalledURL = '{{link_obj.desktop_link}}';
+        var inAPPURL = '{{link_obj.apple_link}}';
+        window.location = inAPPURL;
+        setTimeout(function () {
+          window.location =  appNotInstalledURL;
+        }, 250);
+      }, false);
+
+    </script>
+    <iframe id="l" width="1" height="1" style="visibility:hidden"></iframe>
+  </body>
+</html>
